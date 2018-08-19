@@ -18,7 +18,7 @@ module YamlDb
       dir = ENV['dir'] || 'base'
       file = ENV['file'] || 'view_counts1'
       truncate = ENV['reset_row'] || false
-      SerializationHelper::Base.new(helper).load(db_dump_data_file(dir, file, helper.extension), truncate)
+      SerializationHelper::Base.new(helper).load(db_dump_a_file(dir, file, helper.extension), truncate)
     end
 
     def self.data_load_dir_task
@@ -38,7 +38,8 @@ module YamlDb
     end
 
     def self.db_dump_a_file(dir = '', filename, extension = 'yml')
-      "#{dump_dir("/#{dir}")}/#{filename}.#{extension}"
+      ddir = dump_dir("/#{dir}")
+      "#{ddir}/#{filename}.#{extension}"
     end
 
     def self.dump_dir(dir = '')
