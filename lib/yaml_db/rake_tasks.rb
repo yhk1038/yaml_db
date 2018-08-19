@@ -37,7 +37,7 @@ module YamlDb
       "#{dump_dir}/data.#{extension}"
     end
 
-    def self.db_dump_a_file(dir = '', filename, extension = 'yml')
+    def self.db_dump_a_file(dir, filename, extension = 'yml')
       ddir = dump_dir("/#{dir}")
       "#{ddir}/#{filename}.#{extension}"
     end
