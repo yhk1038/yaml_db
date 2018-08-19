@@ -34,6 +34,7 @@ module YamlDb
 
       def load(filename, truncate = true)
         disable_logger
+        puts "load #{filename}"
         @loader.load(File.new(filename, "r"), truncate)
         reenable_logger
       end
