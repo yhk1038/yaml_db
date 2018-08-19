@@ -21,6 +21,10 @@ namespace :db do
       YamlDb::RakeTasks.data_load_task
     end
 
+    task :load_a => :environment do
+      YamlDb::RakeTasks.data_load_specific_file_task
+    end
+
     desc "Load contents of db/data_dir into database"
     task :load_dir  => :environment do
       YamlDb::RakeTasks.data_load_dir_task
