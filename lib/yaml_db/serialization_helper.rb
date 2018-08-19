@@ -26,7 +26,7 @@ module YamlDb
         tables.each do |table|
           File.open("#{dirname}/#{table}.#{@extension}", "w") do |io|
             @dumper.before_table(io, table)
-            @dumper.dump_table io, table
+            @dumper.dump_table(io, table)
             @dumper.after_table(io, table)
           end
         end
@@ -43,7 +43,9 @@ module YamlDb
           if filename =~ /^[.]/
             next
           end
+          puts "load #{filename}"
           @loader.load(File.new("#{dirname}/#{filename}", "r"), truncate)
+          puts "end"
         end
       end
 

@@ -10,12 +10,14 @@ module YamlDb
     end
 
     def self.data_load_task
-      SerializationHelper::Base.new(helper).load(db_dump_data_file(helper.extension))
+      truncate = ENV['reset_row'] || false
+      SerializationHelper::Base.new(helper).load(db_dump_data_file(helper.extension), truncate)
     end
 
     def self.data_load_dir_task
       dir = ENV['dir'] || 'base'
-      SerializationHelper::Base.new(helper).load_from_dir(dump_dir("/#{dir}"))
+      truncate = ENV['reset_row'] || false
+      SerializationHelper::Base.new(helper).load_from_dir(dump_dir("/#{dir}"), truncate)
     end
 
     private
